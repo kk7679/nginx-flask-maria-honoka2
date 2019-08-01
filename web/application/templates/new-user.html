@@ -1,0 +1,62 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+
+<div class="mt-5 pt-3 ml-5">
+    <hr>
+    <h5 class="mb-3 ml-3">新規登録</h5>
+    <hr>
+    <form action="{{ url_for('create_user') }}" method="POST">
+        <div class="form-group">
+            <label for='name'>名前</label>
+            <div class="row">
+                <div class="col-sm-4">
+                    <input class='form-control type='text' name='name' value='' placeholder="" autofocus required>
+                </div>
+            </div>
+        </div>
+        <div class="form-group mt-3">
+            <label for="role">役割</label>
+            <div class="row">
+                <div class="col-sm-3">
+                    <select class="form-control" name="role">
+                        {% for role in roles%}
+                            <option value="{{role.id}}">{{role.name}}</option>
+                        {% endfor%}
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group mt-3">
+            <label for='email'>メールアドレス</label><br>
+            <div class="row">
+                <div class="col-sm-4">
+                    <input class="form-control" type='email' name='email' placeholder='xxxxx@xxx.com' required>
+                </div>
+            </div>
+        </div>
+        <div class="form-group mt-3">
+            <label for='password'>パスワード（半角英数６文字以上20字以下）</label><br>
+            <div class="row">
+                <div class="col-sm-4">
+                    <input class="form-control" type='password' name='password' id="password" pattern='(?=.*[a-zA-Z])(?=.*\d).{6,20}' required>
+                </div>
+            </div>
+        </div>
+        <div class="form-group mt-3">
+            <label for='password'>パスワード確認</label><br>
+            <div class="row">
+                <div class="col-sm-4">
+                    <input type="password" class="form-control" name="confirm" oninput="CheckPassword(this)" required>
+                </div>
+            </div>
+        </div>
+        <div class="pt-4">
+            <button class='btn btn-outline-dark mr-2 w-15' type='submit' onclick="OnButtonClick();">登録</button>
+            <a href='/' class='btn btn-outline-dark'>キャンセル</a>
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}  
