@@ -12,24 +12,13 @@ def create_hash(password, salt):
     hash_password = binascii.hexlify(temp_password).decode()
     return hash_password
 
-def pass_check(enter_hash_password, password):
-    if enter_hash_password == password:
-        return True
-    else:
-        return False
 
 if __name__ == "__main__":
     salt = create_salt()
     # salt = "koR54sfR472wsdr0ol5TYdGhEfcm"
     password = '0o9i8u7y6t'
-    enter_password = '0o9i8u7y6t'
     hash_password = create_hash(password, salt)
-    enter_hash_password = create_hash(enter_password, salt)
     print('----salt-----')
     print(salt)
     print('-----hash_password-----')
     print(hash_password)
-    print('-----enter_hash_password-----')
-    print(enter_hash_password)
-    print('-----判定-----')
-    print(pass_check(enter_hash_password, hash_password))
