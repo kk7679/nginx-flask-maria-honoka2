@@ -8,10 +8,10 @@
     <hr>
     <form action="{{ url_for('create_user') }}" method="POST">
         <div class="form-group">
-            <label for='name'>名前</label>
+            <label for='name'>名前（最大２０文字）</label>
             <div class="row">
                 <div class="col-sm-4">
-                    <input class='form-control type='text' name='name' value='' placeholder="" autofocus required>
+                    <input class='form-control type='text' name='name' value='' maxlength="20" autofocus required>
                 </div>
             </div>
         </div>
